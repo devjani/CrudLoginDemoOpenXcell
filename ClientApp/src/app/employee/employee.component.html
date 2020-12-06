@@ -1,0 +1,24 @@
+<h1 id="tableLabel">Employees</h1>
+
+<p *ngIf="!dataSource"><em>Loading...</em></p>
+<button class="button btn-primary" style="float:right" (click)="addEmployee()">Add Employee</button>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="(dataSource| async)">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Company</th>
+      <th>Employemnt Type</th>
+      <th>Gender</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of (dataSource| async)">
+      <td>{{ data.name }}</td>
+      <td>{{ data.company }}</td>
+      <td>{{ getEmpType(data.employemntType) }}</td>
+      <td>{{ getGender(data.gender) }}</td>
+      <td><button class="button btn-danger" (click)="deleteEmployee(data.employeeId)">Delete</button> | <button (click)="updateEmployee(data.employeeId)">Edit</button></td>
+    </tr>
+  </tbody>
+</table>

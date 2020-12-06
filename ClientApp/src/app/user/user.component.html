@@ -1,0 +1,22 @@
+<h1 id="tableLabel">Users</h1>
+
+<p *ngIf="!dataSource"><em>Loading...</em></p>
+<button class="button btn-primary" style="float:right" (click)="addUser()">Add User</button>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="(dataSource| async)">
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of (dataSource| async)">
+      <td>{{ data.userName }}</td>
+      <td>{{ data.email }}</td>
+      <td>{{ data.contactNo }}</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
